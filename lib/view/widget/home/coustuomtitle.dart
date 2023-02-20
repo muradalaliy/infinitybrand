@@ -5,7 +5,9 @@ import 'package:infinitybrand/view/widget/custombuttona.dart';
 class CoustuomTitle extends StatelessWidget {
   final String name;
   final Function? onPressed;
-  const CoustuomTitle({super.key, required this.name, this.onPressed});
+  final bool? btIsshow;
+  const CoustuomTitle(
+      {super.key, required this.name, this.onPressed, this.btIsshow});
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +19,9 @@ class CoustuomTitle extends StatelessWidget {
             const CustomButtonA(
               name: "عرض الكل",
               widths: 90,
-              hig: 35,
+              hig: 30,
               isborder: true,
-              color: AppColor.primaryLight,
+              color: AppColor.white,
             ),
             Text(
               name,

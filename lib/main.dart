@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:infinitybrand/core/constant/apptheme.dart';
 import 'package:infinitybrand/core/constant/color.dart';
@@ -15,6 +16,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: AppColor.primarycolour,
+    ));
     return GetMaterialApp(
       title: 'Flutter Demo',
       // home: const HomeScreen(),

@@ -10,16 +10,16 @@ class TopBarCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(0),
       padding: EdgeInsets.only(left: 11, right: 11, top: 5, bottom: padbottom),
       alignment: Alignment.center,
       decoration: const BoxDecoration(
         color: AppColor.primarycolour,
         borderRadius: BorderRadius.only(
-          topRight: Radius.circular(20.0),
+          topRight: Radius.circular(0.0),
           bottomLeft: Radius.circular(20.0),
           bottomRight: Radius.circular(20.0),
-          topLeft: Radius.circular(20.0),
+          topLeft: Radius.circular(0.0),
         ),
       ),
       child: Row(

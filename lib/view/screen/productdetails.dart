@@ -1,8 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:infinitybrand/core/constant/color.dart';
+import 'package:infinitybrand/core/constant/routes.dart';
 import 'package:infinitybrand/view/widget/custombuttona.dart';
 import 'package:infinitybrand/view/widget/custombuttonb.dart';
+import 'package:infinitybrand/view/widget/productdetails/connectus_widget.dart';
+import 'package:infinitybrand/view/widget/productdetails/pay_layout.dart';
+import 'package:infinitybrand/view/widget/productdetails/prices_widget.dart';
+import 'package:infinitybrand/view/widget/productdetails/sizes_widget.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({super.key});
@@ -25,7 +31,7 @@ class ProductDetails extends StatelessWidget {
                     // height: size.height,
                     child: Stack(children: [
                       Container(
-                        height: size.height,
+                        height: size.height + 150,
                         margin: EdgeInsets.only(top: size.height * 0.3),
                         // height: 500,
                         decoration: const BoxDecoration(
@@ -38,6 +44,10 @@ class ProductDetails extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               top: 150, left: 20, right: 20),
                           child: Column(children: [
+                            _coustuompricesre(),
+                            const Divider(
+                              height: 30,
+                            ),
                             PricesWidget(texttheme: texttheme),
                             const Divider(
                               height: 30,
@@ -54,7 +64,46 @@ class ProductDetails extends StatelessWidget {
                               height: 30,
                             ),
                             DeliveryInfoWidget(texttheme: texttheme),
-                            SizedBox(
+                            const Divider(
+                              height: 30,
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(bottom: 20),
+                              width: size.width,
+                              child: RichText(
+                                textAlign: TextAlign.end,
+                                text: TextSpan(
+                                    text: " التنسيق الالي للمنتج : ",
+                                    style: texttheme.headline1!.copyWith(
+                                      color: AppColor.primarycolour,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 17,
+                                    ),
+                                    children: [
+                                      TextSpan(
+                                          text: "يعتمد على الذكاء الصناعي ",
+                                          style: texttheme.headline1!.copyWith(
+                                              color: AppColor.codgray,
+                                              fontWeight: FontWeight.w100,
+                                              fontSize: 10)),
+                                    ]),
+                              ),
+                            ),
+                            CustomButtonB(
+                                iconbt: Icons.arrow_back,
+                                hig: 48,
+                                isborder: false,
+                                onPressed: () {
+                                  Get.toNamed(AppRoute.pranddetails);
+                                },
+                                name: "! جربة الان ",
+                                widths: size.width / 2.0,
+                                color: AppColor.yellowb),
+                            const Divider(
+                              height: 30,
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(bottom: 20),
                               width: size.width,
                               child: Text(
                                 "استفسر عن المنتج",
@@ -281,79 +330,6 @@ class DeliveryInfoWidget extends StatelessWidget {
   }
 }
 
-class ConnectUsWidget extends StatelessWidget {
-  const ConnectUsWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Container(
-          padding: const EdgeInsets.all(0),
-          decoration: const BoxDecoration(
-            color: AppColor.yellowb,
-            borderRadius: BorderRadius.all(Radius.circular(13)),
-          ),
-          child: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.call,
-              color: AppColor.white,
-            ),
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.all(0),
-          decoration: const BoxDecoration(
-            color: AppColor.grey,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(13),
-              topRight: Radius.circular(13),
-              bottomLeft: Radius.circular(13),
-              bottomRight: Radius.circular(13),
-            ),
-          ),
-          child: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.category,
-              color: AppColor.white,
-            ),
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.all(0),
-          decoration: const BoxDecoration(
-            color: AppColor.primary,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(13),
-              topRight: Radius.circular(13),
-              bottomLeft: Radius.circular(13),
-              bottomRight: Radius.circular(13),
-            ),
-          ),
-          child: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.message,
-              color: AppColor.white,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
 class PrandWidget extends StatelessWidget {
   const PrandWidget({
     Key? key,
@@ -367,8 +343,15 @@ class PrandWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        const CustomButtonA(
-            name: "10يورو", widths: 100, color: AppColor.yellowb, hig: 30),
+        CustomButtonA(
+          name: "10يورو",
+          widths: 100,
+          color: AppColor.yellowb,
+          hig: 30,
+          onPressed: () {
+            Get.toNamed(AppRoute.pranddetails);
+          },
+        ),
         const SizedBox(
           width: 10,
         ),
@@ -393,75 +376,6 @@ class PrandWidget extends StatelessWidget {
                         color: AppColor.grey,
                         fontWeight: FontWeight.w100,
                         fontSize: 10)),
-              ]),
-        ),
-      ],
-    );
-  }
-}
-
-class PricesWidget extends StatelessWidget {
-  const PricesWidget({
-    Key? key,
-    required this.texttheme,
-  }) : super(key: key);
-
-  final TextTheme texttheme;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        RichText(
-          textAlign: TextAlign.end,
-          text: TextSpan(
-              text: "الكمية\n",
-              style: texttheme.headline1!.copyWith(
-                color: AppColor.codgray,
-                fontSize: 13,
-              ),
-              children: [
-                TextSpan(
-                    text: "255",
-                    style: texttheme.headline1!.copyWith(
-                        color: AppColor.codgray,
-                        fontWeight: FontWeight.w800,
-                        fontSize: 26)),
-              ]),
-        ),
-        RichText(
-          textAlign: TextAlign.end,
-          text: TextSpan(
-              text: "رقم المنتج\n",
-              style: texttheme.headline1!.copyWith(
-                color: AppColor.codgray,
-                fontSize: 13,
-              ),
-              children: [
-                TextSpan(
-                    text: "255",
-                    style: texttheme.headline1!.copyWith(
-                        color: AppColor.codgray,
-                        fontWeight: FontWeight.w800,
-                        fontSize: 26)),
-              ]),
-        ),
-        RichText(
-          textAlign: TextAlign.end,
-          text: TextSpan(
-              text: "السعر\n",
-              style: Theme.of(context).textTheme.headline1!.copyWith(
-                    color: AppColor.codgray,
-                    fontSize: 13,
-                  ),
-              children: [
-                TextSpan(
-                    text: "\$255",
-                    style: texttheme.headline1!.copyWith(
-                        color: AppColor.codgray,
-                        fontWeight: FontWeight.w800,
-                        fontSize: 26)),
               ]),
         ),
       ],
@@ -540,108 +454,48 @@ class CountItemsWidget extends StatelessWidget {
   }
 }
 
-class SizesWidget extends StatelessWidget {
-  const SizesWidget({
-    Key? key,
-    required this.size,
-  }) : super(key: key);
-
-  final Size size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Divider(
-          height: 30,
-        ),
-        SizedBox(
-          width: size.width,
-          child: RichText(
-            textAlign: TextAlign.end,
-            text: TextSpan(
-                text: "المقاسات   : ",
-                style: Theme.of(context).textTheme.headline1!.copyWith(
-                      color: AppColor.codgray,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w800,
-                    ),
-                children: [
-                  TextSpan(
-                      text: "قم بتحديد المقاس",
-                      style: Theme.of(context).textTheme.headline1!.copyWith(
-                          color: AppColor.grey,
-                          fontWeight: FontWeight.w100,
-                          fontSize: 10)),
-                ]),
-          ),
-        ),
-        SizedBox(
-          height: 55,
-          child: ListView.builder(
-            itemCount: 5,
-            reverse: true,
-            padding: const EdgeInsets.only(right: 10, top: 10),
-            shrinkWrap: false,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 7),
-                child: CustomButtonA(
-                  color: index == 1 ? AppColor.primary : AppColor.primaryLight,
-                  name: "XXL",
-                  isborder: index == 1 ? true : false,
-                  hig: 10,
-                  widths: 55,
-                ),
-              );
-            },
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class PayLayout extends StatelessWidget {
-  const PayLayout({
-    Key? key,
-    required this.size,
-  }) : super(key: key);
-
-  final Size size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: AppColor.backgroundcolor,
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(24), topRight: Radius.circular(24)),
+Widget _coustuompricesre() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.end,
+    children: [
+      RichText(
+        textAlign: TextAlign.end,
+        text: const TextSpan(
+            text: " 26000  ",
+            style: TextStyle(
+                fontWeight: FontWeight.w800,
+                fontFamily: 'Cairo',
+                decoration: TextDecoration.lineThrough,
+                color: AppColor.m4),
+            children: [
+              TextSpan(
+                  text: "السعر السابق",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w300,
+                      fontFamily: 'Cairo',
+                      decoration: TextDecoration.lineThrough,
+                      color: AppColor.m4))
+            ]),
       ),
-      height: 70,
-      child: Padding(
-        padding: const EdgeInsets.all(5),
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          CustomButtonB(
-              iconbt: Icons.payments_outlined,
-              hig: 48,
-              isborder: false,
-              onPressed: () {},
-              name: "  شراء الان",
-              widths: size.width / 2.5,
-              color: AppColor.yellowb),
-          CustomButtonB(
-              iconbt: Icons.shopping_cart_outlined,
-              hig: 48,
-              isborder: false,
-              onPressed: () {},
-              name: " اضافة الى السلة",
-              widths: size.width / 2.5,
-              color: AppColor.primary)
-        ]),
+      Container(
+        margin: const EdgeInsets.only(left: 10),
+        padding: const EdgeInsets.only(left: 2, right: 2),
+        decoration: const BoxDecoration(
+          color: AppColor.m4,
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10), bottomRight: Radius.circular(0)),
+        ),
+        child: const Text(
+          "%78 خصم ",
+          maxLines: 2,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontFamily: 'Cairo',
+              fontSize: 12,
+              color: AppColor.white,
+              fontWeight: FontWeight.w400),
+        ),
       ),
-      // color: AppColor.codgray,
-    );
-  }
+    ],
+  );
 }

@@ -19,10 +19,10 @@ class HomeFragment extends StatelessWidget {
           child: Column(
             children: [
               Stack(
-                alignment: Alignment.center,
+                alignment: Alignment.topCenter,
                 children: const [
                   TopBarCustom(
-                    padbottom: 250,
+                    padbottom: 300,
                     name: "انفينتي براند",
                   ),
                   CardHorizontalAds(),

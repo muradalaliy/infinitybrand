@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:infinitybrand/core/constant/color.dart';
-import 'package:infinitybrand/core/constant/routes.dart';
 
 class CustomButtonB extends StatelessWidget {
   const CustomButtonB(
@@ -29,9 +27,7 @@ class CustomButtonB extends StatelessWidget {
       height: hig,
       width: widths,
       child: ElevatedButton.icon(
-        onPressed: () {
-          Get.toNamed(AppRoute.productdetails);
-        },
+        onPressed: onPressed,
         icon: Icon(
           iconbt,
           color: AppColor.codgray,

@@ -35,8 +35,8 @@ class CardProducts extends StatelessWidget {
                             const Icon(Icons.error),
                       )),
                   Container(
-                    padding:
-                        const EdgeInsets.only(right: 10, left: 5, bottom: 5),
+                    padding: const EdgeInsets.only(
+                        right: 5, left: 5, bottom: 5, top: 5),
                     child: const Text(
                       "رجالة حديثه  الان  ملبوسات ملبوسات",
                       maxLines: 2,
@@ -44,6 +44,7 @@ class CardProducts extends StatelessWidget {
                       style: TextStyle(
                           fontFamily: 'Cairo',
                           fontSize: 11.5,
+                          height: 1.5,
                           color: AppColor.codgray,
                           fontWeight: FontWeight.w600),
                     ),
@@ -60,7 +61,7 @@ class CardProducts extends StatelessWidget {
 
   Widget pricnew() {
     return Padding(
-      padding: const EdgeInsets.only(right: 10, left: 5, bottom: 5),
+      padding: const EdgeInsets.only(right: 0, left: 5, bottom: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: const [
@@ -71,18 +72,19 @@ class CardProducts extends StatelessWidget {
             style: TextStyle(
                 fontFamily: 'Cairo',
                 fontSize: 12,
-                color: AppColor.secondarycolourtwo,
+                color: AppColor.codgray,
                 fontWeight: FontWeight.w300),
           ),
           SizedBox(
             width: 5,
           ),
           Text(
-            "250." + "RY",
+            "250." "RY",
             // overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.right,
             style: TextStyle(
               fontSize: 15,
+              color: AppColor.blacka,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -115,7 +117,7 @@ class CardProducts extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          margin: EdgeInsets.all(3),
+          margin: const EdgeInsets.all(3),
           padding: const EdgeInsets.all(3),
           decoration: const BoxDecoration(
             color: AppColor.white,
@@ -159,14 +161,14 @@ class CardProducts extends StatelessWidget {
           Container(
             padding: const EdgeInsets.only(left: 2, right: 2),
             decoration: const BoxDecoration(
-              color: AppColor.primarycolour,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: AppColor.yellowb,
+              borderRadius: BorderRadius.all(Radius.circular(5)),
             ),
             child: Row(
               children: const [
                 Icon(
                   Icons.star,
-                  size: 18,
+                  size: 17,
                   color: AppColor.white,
                 ),
                 SizedBox(
@@ -185,9 +187,7 @@ class CardProducts extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(
-            width: 0,
-          ),
+
           // _coustuompricesre(),
           pricnew()
         ],

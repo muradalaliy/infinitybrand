@@ -39,7 +39,7 @@ class BrandDetails extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -66,28 +66,32 @@ class BrandDetails extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Row(
                       children: [
                         Expanded(
-                          child: CachedNetworkImage(
-                            height: 220,
-                            imageUrl:
-                                'https://firebasestorage.googleapis.com/v0/b/yemensarf.appspot.com/o/FB_IMG_1675105414502.jpg?alt=media&token=a2309204-226a-494c-be3f-8e6437746d96',
-                            placeholder: (context, url) =>
-                                const CircularProgressIndicator(),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20.0),
+                            child: CachedNetworkImage(
+                              height: 250,
+                              imageUrl:
+                                  'https://firebasestorage.googleapis.com/v0/b/yemensarf.appspot.com/o/FB_IMG_1675105414502.jpg?alt=media&token=a2309204-226a-494c-be3f-8e6437746d96',
+                              fit: BoxFit.cover,
+                              placeholder: (context, url) =>
+                                  const CircularProgressIndicator(),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
+                            ),
                           ),
                         ),
                         const SizedBox(
-                          width: 50,
+                          width: 10,
                         ),
                         RichText(
                           textAlign: TextAlign.end,
                           text: TextSpan(
-                              text: "السعر\n",
+                              text: "البلد\n",
                               style: Theme.of(context)
                                   .textTheme
                                   .headline1!
@@ -97,14 +101,14 @@ class BrandDetails extends StatelessWidget {
                                   ),
                               children: [
                                 TextSpan(
-                                    text: "255",
+                                    text: "اليمن",
                                     style: Theme.of(context)
                                         .textTheme
                                         .headline1!
                                         .copyWith(
                                             color: AppColor.white,
                                             fontWeight: FontWeight.w800,
-                                            fontSize: 30)),
+                                            fontSize: 25)),
                               ]),
                         ),
                       ],
